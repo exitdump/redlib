@@ -247,6 +247,7 @@ async fn main() {
 	app.at("/healthz").get(|_| resource("ok", "text/plain", false).boxed());
 	app.at("/healthz/reddit").get(|_| reddit_health().boxed());
 	app.at("/healthz/reddit.json").get(|_| reddit_badge().boxed());
+	app.at("/api/*path").get(|r| redlib::api::handler(r).boxed());
 
 	// Read static files
 	app.at("/style.css").get(|_| style().boxed());
