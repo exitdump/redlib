@@ -568,8 +568,7 @@ summary:not(.comment_data):hover {
     text-decoration: underline;
 }
 
-#instance_info details[open] > summary,
-#feeds[open] > summary {
+#instance_info details[open] > summary {
     margin-bottom: 10px;
 }
 
@@ -651,6 +650,8 @@ summary:not(.comment_data):hover {
 
 #feed_list {
     position: absolute;
+    /* gap here, not on the summary: that would make the menubar taller */
+    margin-top: 10px;
     display: flex;
     min-width: 100%;
     max-height: 500px;
@@ -1322,6 +1323,17 @@ a.search_subreddit:hover .search_subreddit_name {
     font-size: 12px;
     border-radius: 5px;
     font-weight: bold;
+}
+
+/* Not `.advertiser`: EasyList hides that class */
+.author_badge {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    padding: 1px 4px;
+    font-size: 11px;
+    border-radius: 5px;
+    font-weight: bold;
+    vertical-align: middle;
 }
 
 .spoiler {
@@ -2207,6 +2219,23 @@ body > footer.has_update {
 }
 body.update_footer_shown {
     padding-bottom: calc(2 * var(--footer-height));
+}
+/* Same bar at the top while a page is served from the stale cache */
+.stale_banner {
+    width: 100%;
+    min-height: var(--footer-height);
+    padding: 6px 10px;
+    line-height: 18px;
+    box-sizing: border-box;
+    background: var(--accent);
+    color: white;
+    text-align: center;
+}
+/* Stands in for the fixed navbar while the bar shows */
+.top_bars.sticky {
+    position: sticky;
+    top: 0;
+    z-index: 2;
 }
 #error a {
     color: var(--accent);
